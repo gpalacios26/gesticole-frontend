@@ -1,0 +1,35 @@
+<div class="main-wrapper">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>
+        <div class="center">
+          <img src="../../../assets/images/logo.png">
+        </div>
+        <strong>GestiCole</strong>
+      </mat-card-title>
+    </mat-card-header>
+
+    <form class="material-form" autocomplete="off" #loginForm="ngForm" [formGroup]="form" (ngSubmit)="iniciarSesion()">
+
+      <mat-card-content>
+        <mat-form-field class="material-full-width">
+          <input type="email" matInput placeholder="Correo" formControlName="usuario">
+        </mat-form-field>
+
+        <mat-form-field class="material-full-width">
+          <input type="password" matInput placeholder="Contraseña" formControlName="clave">
+        </mat-form-field>
+      </mat-card-content>
+
+      <p class="send-passwd">
+        <a [routerLink]="['/reseteo']">
+          <mat-icon style="font-size: 14px;">lock</mat-icon> ¿Olvidaste tu contraseña?
+        </a>
+      </p>
+
+      <button type="submit" mat-raised-button color="primary" class="btn-block">
+        <mat-icon>login</mat-icon> Iniciar Sesión
+      </button>
+    </form>
+  </mat-card>
+</div>

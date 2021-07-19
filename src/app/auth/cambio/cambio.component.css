@@ -1,0 +1,60 @@
+.main-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.box {
+  position: relative;
+  top: 0;
+  opacity: 1;
+  float: left;
+  padding: 60px 50px 40px 50px;
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  z-index: 5;
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+.main-wrapper .material-form {
+  min-width: 100%;
+  max-width: 300px;
+  width: 100%;
+}
+
+.main-wrapper .material-full-width,
+.main-wrapper .btn-block {
+  width: 100%;
+}
+
+.btn-block {
+  margin-top: 25px;
+}
+
+.main-wrapper mat-card-header {
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-weight: 600;
+}
+
+.main-wrapper mat-card-header mat-card-title {
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.main-wrapper .mat-card {
+  padding: 45px 70px 55px;
+}
+
+.main-wrapper button {
+  padding: 10px;
+  font-size: 18px;
+}

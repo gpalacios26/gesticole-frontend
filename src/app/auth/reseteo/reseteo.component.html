@@ -1,0 +1,36 @@
+<div id="precarga_" class="wrapper_" *ngIf="loader" [style.height.px]="height" (window:resize)="onResize($event)">
+  <div class="box_">
+    <mat-spinner color="warn"></mat-spinner>
+  </div>
+</div>
+
+<div class="main-wrapper">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Recuperar Contraseña</mat-card-title>
+    </mat-card-header>
+
+    <form class="material-form" autocomplete="off" #resetForm="ngForm" [formGroup]="form" (ngSubmit)="enviarCorreo()">
+
+      <p class="instrucciones">
+        Para recuperar tu contraseña, ingresa tu correo y te enviaremos las instrucciones
+      </p>
+
+      <mat-card-content>
+        <mat-form-field class="material-full-width">
+          <input type="email" matInput placeholder="Correo" formControlName="correo" required (blur)="validarCorreo()">
+        </mat-form-field>
+      </mat-card-content>
+
+      <button type="submit" mat-raised-button color="primary" class="btn-block">
+        <mat-icon>mark_email_read</mat-icon> Enviar Correo
+      </button>
+
+      <p class="footer-card">
+        <a [routerLink]="['/login']">
+          <mat-icon style="font-size: 14px;">arrow_back_ios</mat-icon> Regresar
+        </a>
+      </p>
+    </form>
+  </mat-card>
+</div>

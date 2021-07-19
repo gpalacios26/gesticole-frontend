@@ -1,0 +1,26 @@
+<div class="main-wrapper">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Cambiar Contraseña</mat-card-title>
+    </mat-card-header>
+
+    <form class="material-form" autocomplete="off" #cambioForm="ngForm" [formGroup]="form" (ngSubmit)="cambiarClave()">
+
+      <mat-card-content>
+        <mat-form-field class="material-full-width">
+          <input type="password" matInput placeholder="Contraseña" formControlName="password" required>
+        </mat-form-field>
+
+        <mat-form-field class="material-full-width">
+          <input type="password" matInput placeholder="Repetir Contraseña" formControlName="repassword" required>
+          <mat-hint>La contraseña debe tener mínimo 8 caracteres, al menos una minúscula, al menos una
+            mayúscula y al menos un número</mat-hint>
+        </mat-form-field>
+      </mat-card-content>
+
+      <button type="submit" mat-raised-button color="primary" class="btn-block">
+        <mat-icon>verified_user</mat-icon> Cambiar Clave
+      </button>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,58 @@
+<div class="dialog-cerrar">
+  <button mat-icon-button color="warn" [mat-dialog-close]="false">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<h3 class="dialog-titulo" mat-dialog-title>
+  {{titulo}}
+</h3>
+<div mat-dialog-content>
+  <div class="wrapper">
+    <p style="text-align:right;">
+      <img [src]="fotoFamiliar" class="foto">
+    </p>
+    <p>
+      <span style="font-weight:500;">Código: </span> {{familiar.idFamiliar}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Nombres: </span> {{familiar.nombres}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Apellidos: </span> {{familiar.apellidos}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Tipo Documento: </span> {{familiar.tipoDocumento.descripcion}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Número Documento: </span> {{familiar.numDocumento}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Fecha Nacimiento: </span> {{familiar.fechaNac | date:'dd/MM/yy'}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Sexo: </span> {{familiar.sexo.descripcion}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Teléfono Celular: </span> {{familiar.telCelular}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Teléfono Fijo: </span> {{familiar.telFijo}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Correo: </span> {{familiar.correo}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Familiar del Alumno: </span> {{familiar.alumno.nombres + ' ' + familiar.alumno.apellidos}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Parentesco: </span> {{familiar.parentesco.descripcion}}
+    </p>
+    <p style="text-align:center;margin-top:20px;">
+      <button mat-raised-button color="primary" type="button" onclick="document.getElementById('flArchivo').click()">
+        <span> CARGAR FOTO </span>
+        <mat-icon>photo_camera</mat-icon>
+      </button>
+      <input id="flArchivo" type="file" style="display: none;" (change)="handleUpload($event)">
+    </p>
+  </div>
+</div>

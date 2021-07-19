@@ -1,0 +1,44 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="push" class="sidenav-bar">
+    <div class="center">
+      <p class="padding-5">
+        <mat-icon style="font-size:60px;margin-left:24px;">school</mat-icon>
+        <br>
+        <strong style="font-size:24px;">GestiCole</strong>
+      </p>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <ng-material-multilevel-menu [items]='appitems' (selectedItem)="selectedItem($event)">
+    </ng-material-multilevel-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()" style="margin-right:10px;">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a [routerLink]="['/panel/home']" style="color:#fff;text-decoration:none;">
+        <strong>GestiCole</strong>
+      </a>
+
+      <span class="menu-spacer"></span>
+
+      <button mat-button [matMenuTriggerFor]="menu">
+        <span *ngIf="usuario" style="font-size:14px;">{{usuario.username}}</span>
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item [routerLink]="['/panel/perfil']">
+          <mat-icon>account_circle</mat-icon> Mi Perfil
+        </button>
+        <button mat-menu-item (click)="cerrarSesion()">
+          <mat-icon>exit_to_app</mat-icon> Cerrar Sesión
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

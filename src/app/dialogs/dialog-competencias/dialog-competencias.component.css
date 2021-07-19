@@ -1,0 +1,29 @@
+.dialog-cerrar {
+  float: right;
+  margin-top: -15px;
+  margin-right: -15px;
+}
+
+.dialog-titulo {
+  text-align: center;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.dialog-botones {
+  text-align: center;
+  margin: 20px;
+}
+
+.wrapper {
+  background: #3c4145 !important;
+  color: #fff !important;
+  width: 100%;
+  min-width: 350px;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.mat-list-item {
+  font-size: 14px;
+}

@@ -1,0 +1,15 @@
+.dialog-icono {
+  text-align: center;
+  font-size: 3em;
+  margin: 0px;
+}
+
+.dialog-titulo {
+  text-align: center;
+  font-size: 2em;
+}
+
+.dialog-botones {
+  text-align: center;
+  margin: 20px;
+}

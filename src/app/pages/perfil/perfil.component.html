@@ -1,0 +1,54 @@
+<mat-toolbar>
+  <span>Perfil de Usuario</span>
+</mat-toolbar>
+
+<div class="container-app">
+  <form class="material-form" autocomplete="off" #perfilForm="ngForm" [formGroup]="form"
+    (ngSubmit)="actualizarPerfil()">
+
+    <div class="row" *ngIf="usuario">
+      <div class="col-5">
+        <div class="row">
+          <div class="col-10">
+            <h3 style="margin-bottom: 0px;">DATOS PERSONALES</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-10">
+            <mat-form-field class="material-full-width">
+              <mat-label>Nombres</mat-label>
+              <input type="text" matInput formControlName="nombres" required>
+            </mat-form-field>
+          </div>
+          <div class="col-10">
+            <mat-form-field class="material-full-width">
+              <mat-label>Apellidos</mat-label>
+              <input type="text" matInput formControlName="apellidos" required>
+            </mat-form-field>
+          </div>
+          <div class="col-10">
+            <mat-form-field class="material-full-width">
+              <mat-label>Usuario</mat-label>
+              <input type="text" matInput [value]="usuario.username" disabled>
+            </mat-form-field>
+          </div>
+          <div class="col-10">
+            <mat-form-field class="material-full-width">
+              <mat-label>Rol</mat-label>
+              <input type="text" matInput [value]="usuario.rol.descripcion" disabled>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" mat-raised-button color="primary" class="btn-registrar">
+              <mat-icon>save</mat-icon> Guardar Cambios
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

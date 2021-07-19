@@ -1,0 +1,124 @@
+<mat-toolbar>
+  <span>{{titulo}}</span>
+</mat-toolbar>
+
+<div class="container-app">
+  <form class="material-form" autocomplete="off" #familiarForm="ngForm" [formGroup]="form" (ngSubmit)="guardarDatos()">
+
+    <div class="row">
+      <div class="col-10">
+        <div class="row">
+          <div class="col-10">
+            <h3 style="margin-bottom: 0px;">DATOS GENERALES</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6" *ngIf="alumnos">
+            <mat-form-field class="material-full-width">
+              <mat-label>Alumno</mat-label>
+              <input type="text" matInput [matAutocomplete]="autoAlumno" [formControl]="myControlAlumno"
+                formControlName="alumno" required>
+              <mat-autocomplete #autoAlumno="matAutocomplete" [displayWith]="mostrarAlumno">
+                <mat-option *ngFor="let alumno of alumnosFiltrados$ | async" [value]="alumno">
+                  {{ alumno.nombres }} {{alumno.apellidos}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+          <div class="col-4" *ngIf="parentesco">
+            <mat-form-field class="material-full-width">
+              <mat-label>Parentesco</mat-label>
+              <mat-select formControlName="idParentesco" required>
+                <mat-option *ngFor="let parent of parentesco" [value]="parent.idParentesco">
+                  {{parent.descripcion}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-5">
+            <mat-form-field class="material-full-width">
+              <mat-label>Nombres</mat-label>
+              <input type="text" matInput formControlName="nombres" required>
+            </mat-form-field>
+          </div>
+          <div class="col-5">
+            <mat-form-field class="material-full-width">
+              <mat-label>Apellidos</mat-label>
+              <input type="text" matInput formControlName="apellidos" required>
+            </mat-form-field>
+          </div>
+          <div class="col-3" *ngIf="tiposDocumento">
+            <mat-form-field class="material-full-width">
+              <mat-label>Tipo Documento</mat-label>
+              <mat-select formControlName="idTipoDoc" required>
+                <mat-option *ngFor="let tipoDocumento of tiposDocumento" [value]="tipoDocumento.idTipoDoc">
+                  {{tipoDocumento.descripcion}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-form-field class="material-full-width">
+              <mat-label>Número Documento</mat-label>
+              <input type="text" matInput formControlName="numDocumento" required>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="material-full-width">
+              <mat-label>Fecha Nacimiento</mat-label>
+              <input type="text" matInput [matDatepicker]="picker" formControlName="fechaNac" readonly required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-2" *ngIf="sexos">
+            <mat-form-field class="material-full-width">
+              <mat-label>Sexo</mat-label>
+              <mat-select formControlName="idSexo" required>
+                <mat-option *ngFor="let sexo of sexos" [value]="sexo.idSexo">
+                  {{sexo.descripcion}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="material-full-width">
+              <mat-label>Teléfono Celular</mat-label>
+              <input type="text" matInput formControlName="telCelular" required>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="material-full-width">
+              <mat-label>Teléfono Fijo</mat-label>
+              <input type="text" matInput formControlName="telFijo">
+            </mat-form-field>
+          </div>
+          <div class="col-4">
+            <mat-form-field class="material-full-width">
+              <mat-label>Correo</mat-label>
+              <input type="email" matInput formControlName="correo" required>
+            </mat-form-field>
+          </div>
+          <div class="col-2">
+            <mat-checkbox color="primary" formControlName="contactoEmergencia">Contacto Emergencia
+            </mat-checkbox>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" mat-raised-button color="primary" class="btn-registrar">
+              <mat-icon>save</mat-icon> {{txtBoton}}
+            </button>
+
+            <button type="button" mat-raised-button color="warn" class="btn-registrar" style="margin-left: 10px;"
+              [routerLink]="['/panel/familiares']">
+              <mat-icon>close</mat-icon> Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

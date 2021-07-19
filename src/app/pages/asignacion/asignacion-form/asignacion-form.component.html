@@ -1,0 +1,120 @@
+<mat-toolbar>
+  <span>{{titulo}}</span>
+</mat-toolbar>
+
+<div class="container-app">
+  <form class="material-form" autocomplete="off" #asignacionForm="ngForm" [formGroup]="form"
+    (ngSubmit)="guardarDatos()">
+
+    <div class="row">
+      <div class="col-10">
+        <div class="row">
+          <div class="col-10">
+            <h3 style="margin-bottom: 0px;">DATOS GENERALES</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3" *ngIf="anios">
+            <mat-form-field class="material-full-width">
+              <mat-label>Año Escolar</mat-label>
+              <mat-select formControlName="idAnio" required (selectionChange)="filtrarAnioNivel()">
+                <mat-option *ngFor="let anio of anios" [value]="anio.idAnio">
+                  {{anio.descripcion}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-3" *ngIf="niveles">
+            <mat-form-field class="material-full-width">
+              <mat-label>Nivel Educativo</mat-label>
+              <mat-select formControlName="idNivel" required (selectionChange)="filtrarAnioNivel()">
+                <mat-option *ngFor="let nivel of niveles" [value]="nivel.idNivel">
+                  {{nivel.descripcion}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-4" *ngIf="aulas">
+            <mat-form-field class="material-full-width">
+              <mat-label>Aula</mat-label>
+              <mat-select formControlName="idAula" required>
+                <mat-option *ngFor="let aula of aulas" [value]="aula.idAula">
+                  {{aula.descripcion}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-4" *ngIf="cursos">
+            <mat-form-field class="material-full-width">
+              <mat-label>Curso</mat-label>
+              <mat-select formControlName="idCurso">
+                <mat-option *ngFor="let curso of cursos" [value]="curso.idCurso">
+                  {{curso.descripcion}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-4" *ngIf="personas">
+            <mat-form-field class="material-full-width">
+              <mat-label>Profesor</mat-label>
+              <mat-select formControlName="idPersonal">
+                <mat-option *ngFor="let persona of personas" [value]="persona.idPersonal">
+                  {{persona.nombres + ' ' + persona.apellidos}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-1">
+            <button type="button" mat-raised-button color="primary" matTooltip="Agregar Curso"
+              matTooltipPosition="above" (click)="agregarCurso()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="asignacionDetalle.length > 0">
+          <div class="col-10">
+            <p>Listado de Cursos</p>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width:40%;">Curso</th>
+                    <th style="width:40%;">Profesor</th>
+                    <th style="width:20%;">Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let ad of asignacionDetalle; let i=index">
+                    <td>{{ad.curso.descripcion}}</td>
+                    <td>{{ad.personal.nombres + ' ' + ad.personal.apellidos}}</td>
+                    <td style="text-align: center;">
+                      <button type="button" mat-icon-button color="warn" matTooltip="Eliminar"
+                        matTooltipPosition="above" (click)="eliminarCurso(i)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" mat-raised-button color="primary" class="btn-registrar">
+              <mat-icon>save</mat-icon> {{txtBoton}}
+            </button>
+
+            <button type="button" mat-raised-button color="warn" class="btn-registrar" style="margin-left: 10px;"
+              [routerLink]="['/panel/asignacion']">
+              <mat-icon>close</mat-icon> Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

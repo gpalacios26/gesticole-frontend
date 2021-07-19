@@ -1,0 +1,52 @@
+<div class="dialog-cerrar">
+  <button mat-icon-button color="warn" [mat-dialog-close]="false">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<h3 class="dialog-titulo" mat-dialog-title>
+  {{titulo}}
+</h3>
+<div mat-dialog-content>
+  <div class="wrapper">
+    <p style="text-align:right;">
+      <img [src]="fotoAlumno" class="foto">
+    </p>
+    <p>
+      <span style="font-weight:500;">Código: </span> {{alumno.idAlumno}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Nombres: </span> {{alumno.nombres}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Apellidos: </span> {{alumno.apellidos}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Tipo Documento: </span> {{alumno.tipoDocumento.descripcion}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Número Documento: </span> {{alumno.numDocumento}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Fecha Nacimiento: </span> {{alumno.fechaNac | date:'dd/MM/yy'}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Sexo: </span> {{alumno.sexo.descripcion}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Teléfono Celular: </span> {{alumno.telCelular}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Teléfono Fijo: </span> {{alumno.telFijo}}
+    </p>
+    <p>
+      <span style="font-weight:500;">Correo: </span> {{alumno.correo}}
+    </p>
+    <p style="text-align:center;margin-top:20px;">
+      <button mat-raised-button color="primary" type="button" onclick="document.getElementById('flArchivo').click()">
+        <span> CARGAR FOTO </span>
+        <mat-icon>photo_camera</mat-icon>
+      </button>
+      <input id="flArchivo" type="file" style="display: none;" (change)="handleUpload($event)">
+    </p>
+  </div>
+</div>

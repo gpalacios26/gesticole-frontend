@@ -1,0 +1,19 @@
+<div class="dialog-cerrar">
+  <button mat-icon-button color="warn" [mat-dialog-close]="false">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<h3 class="dialog-titulo" mat-dialog-title>
+  {{titulo}}
+</h3>
+<div mat-dialog-content>
+  <div *ngIf="competencias.length > 0">
+    <div class="wrapper">
+      <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let competencia of competencias; let i=index">
+          <mat-icon mat-list-icon style="font-size:20px;">check_box</mat-icon> {{competencia.descripcion}}
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>

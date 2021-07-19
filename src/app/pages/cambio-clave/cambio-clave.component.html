@@ -1,0 +1,44 @@
+<mat-toolbar>
+  <span>Cambiar Clave de Acceso</span>
+</mat-toolbar>
+
+<div class="container-app">
+  <form class="material-form" autocomplete="off" #cambioClaveForm="ngForm" [formGroup]="form"
+    (ngSubmit)="actualizarClave()">
+
+    <div class="row">
+      <div class="col-5">
+        <div class="row">
+          <div class="col-10">
+            <h3 style="margin-bottom: 0px;">DATOS DE AUTENTICACIÓN</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-10">
+            <mat-form-field class="material-full-width">
+              <mat-label>Nueva Contraseña</mat-label>
+              <input type="password" matInput formControlName="password" required>
+            </mat-form-field>
+          </div>
+          <div class="col-10">
+            <mat-form-field class="material-full-width">
+              <mat-label>Repetir Contraseña</mat-label>
+              <input type="password" matInput formControlName="repassword" required>
+              <mat-hint>El campo debe tener mínimo 8 caracteres, al menos una minúscula, al menos una
+                mayúscula y al menos un número</mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" mat-raised-button color="primary" class="btn-registrar">
+              <mat-icon>verified_user</mat-icon> Cambiar Clave
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

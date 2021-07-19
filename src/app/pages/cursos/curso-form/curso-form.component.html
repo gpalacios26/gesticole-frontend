@@ -1,0 +1,105 @@
+<mat-toolbar>
+  <span>{{titulo}}</span>
+</mat-toolbar>
+
+<div class="container-app">
+  <form class="material-form" autocomplete="off" #cursoForm="ngForm" [formGroup]="form" (ngSubmit)="guardarDatos()">
+
+    <div class="row">
+      <div class="col-5">
+        <div class="row">
+          <div class="col-10">
+            <h3 style="margin-bottom: 0px;">DATOS GENERALES</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-9" *ngIf="anios">
+            <mat-form-field class="material-full-width">
+              <mat-label>Año Escolar</mat-label>
+              <mat-select formControlName="idAnio" required>
+                <mat-option *ngFor="let anio of anios" [value]="anio.idAnio">
+                  {{anio.descripcion}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-1">
+            <button type="button" mat-raised-button color="primary" matTooltip="Nuevo Año Escolar"
+              matTooltipPosition="above" (click)="nuevoAnio()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <div class="col-10" *ngIf="niveles">
+            <mat-form-field class="material-full-width">
+              <mat-label>Nivel Educativo</mat-label>
+              <mat-select formControlName="idNivel" required>
+                <mat-option *ngFor="let nivel of niveles" [value]="nivel.idNivel">
+                  {{nivel.descripcion}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-10">
+            <mat-form-field class="material-full-width">
+              <mat-label>Descripción</mat-label>
+              <input type="text" matInput formControlName="descripcion" required>
+            </mat-form-field>
+          </div>
+          <div class="col-9">
+            <mat-form-field class="material-full-width">
+              <mat-label>Competencia</mat-label>
+              <input type="text" matInput formControlName="competencia">
+            </mat-form-field>
+          </div>
+          <div class="col-1">
+            <button type="button" mat-raised-button color="primary" matTooltip="Agregar Competencia"
+              matTooltipPosition="above" (click)="agregarCompetencia()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="competencias.length > 0">
+          <div class="col-10">
+            <p>Listado de Competencias</p>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width:80%;">Descripción</th>
+                    <th style="width:20%;">Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let competencia of competencias; let i=index">
+                    <td>{{competencia.descripcion}}</td>
+                    <td style="text-align: center;">
+                      <button type="button" mat-icon-button color="warn" matTooltip="Eliminar"
+                        matTooltipPosition="above" (click)="eliminarCompetencia(i)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" mat-raised-button color="primary" class="btn-registrar">
+              <mat-icon>save</mat-icon> {{txtBoton}}
+            </button>
+
+            <button type="button" mat-raised-button color="warn" class="btn-registrar" style="margin-left: 10px;"
+              [routerLink]="['/panel/cursos']">
+              <mat-icon>close</mat-icon> Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
